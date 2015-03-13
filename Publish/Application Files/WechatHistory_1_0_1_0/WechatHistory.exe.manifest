@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="WechatHistory.exe" version="1.0.1.0" publicKeyToken="a2ec997ba6152409" language="neutral" processorArchitecture="x86" type="win32" />
+  <description asmv2:iconFile="WeChat.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="WechatHistory" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <commandLine file="WechatHistory.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EO.WebBrowser.dll" size="27951616">
+      <assemblyIdentity name="EO.WebBrowser" version="3.0.100.0" publicKeyToken="E92353A6BF73FFFC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>ANxLLechKAMva+LNrYqzSV0Vv44=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Data.SQLite.dll" size="1190400">
+      <assemblyIdentity name="System.Data.SQLite" version="1.0.96.0" publicKeyToken="DB937BC2D44FF139" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>G557xZRW0q4MDyRWGewUtAgeBnI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WechatHistory.exe" size="3222016">
+      <assemblyIdentity name="WechatHistory" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>MMj+Olq38pEzvtu5+H/ymHx8shM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="ffmpeg\ffmpeg.exe" size="12433408">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>GmYZNmENthAmxaUpL8qcitp0at4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ffmpeg\SilkDecoder.exe" size="140288">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>yGvMrWlsOUbsJbi5rqwLxQSjqXQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="WeChat.ico" size="408142">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>M3qfbcNiBUPagq2bgMODNUvOZrk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="WechatHistory.exe.config" size="222">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>58EjkOgt6z3GU98Mr/xww0O67DE=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=cxun-PC\User" issuerKeyHash="d9bd4739813533738c656bc39aed638039f16941" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>+UpeG1FfloxuRJuFO9W7uF9iNDQ=</DigestValue></Reference></SignedInfo><SignatureValue>UHRvb9IvXJ2/NMdOnqhKoJsurBxRxyN019XQOV9hetDlmrnK9aR8RGWsh4FLkCmscjqavNXQMr+lcbtUVbNIZ033wmpXptFTNDpHxFDpFJVmXSvUEZg35UqqZEdHlQQMbX8j7M+fNN58jVOWcsSYy1FlVK5qBT5GQq4Hc4IYhx8=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>iO+eXZX2kET2qzxKssQFHcgE2Vkeov9bzR7eXcbgfWoxoBKCqkQ5FKaecWYOEa9IfAxqtPAriDJSRLCK6ceyeCtbw0xjSIF2Cq+O4bOu4g7dvqOI9ZoyHrL4WzspEH0+XwzsTUKk60dqFyuYkm6W30k34gVirAvFxTaNCuo2vEc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="3434625fb8bbd53b859b446e8c965f511b5e4af9" Description="" Url=""><as:assemblyIdentity name="WechatHistory.exe" version="1.0.1.0" publicKeyToken="a2ec997ba6152409" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=cxun-PC\User</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>dkT7hf+8ndHwFGRQDN2ppyi5tCk=</DigestValue></Reference></SignedInfo><SignatureValue>iMDcLmSMi1hgBGhDzpDYedE5PpBBgWAqDibOWicB0nfLWJOSEN/ZF19ObRX9tlGpvfdzd8qUcR6ivoy091s7CnO87KLPktJVp89QNHHWWK1r4rqmu2u5qc9OZVYInEYr8cWDSvPTl3m7qe/fO/iWRzPrAFDAfEqNZ9nODi6rgN4=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>iO+eXZX2kET2qzxKssQFHcgE2Vkeov9bzR7eXcbgfWoxoBKCqkQ5FKaecWYOEa9IfAxqtPAriDJSRLCK6ceyeCtbw0xjSIF2Cq+O4bOu4g7dvqOI9ZoyHrL4WzspEH0+XwzsTUKk60dqFyuYkm6W30k34gVirAvFxTaNCuo2vEc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIByTCCATKgAwIBAgIQP64i2ciTHZ1A6KyW/1D0xzANBgkqhkiG9w0BAQUFADAjMSEwHwYDVQQDHhgAYwB4AHUAbgAtAFAAQwBcAFUAcwBlAHIwHhcNMTUwMzEzMDE1ODI4WhcNMTYwMzEyMDc1ODI4WjAjMSEwHwYDVQQDHhgAYwB4AHUAbgAtAFAAQwBcAFUAcwBlAHIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAIjvnl2V9pBE9qs8SrLEBR3IBNlZHqL/W80e3l3G4H1qMaASgqpEORSmnnFmDhGvSHwMarTwK4gyUkSwiunHsngrW8NMY0iBdgqvjuGzruIO3b6jiPWaMh6y+Fs7KRB9Pl8M7E1CpOtHahcrmJJult9JN+IFYqwLxcU2jQrqNrxHAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEABUFT1dlSsKF9th2JO88eGCIKOMHZN1MacOGerOQBPW/C4q6TjulF+857TD3uy3IZguCYJB3mKSBbREsZeowqqjhoeyPFgcdUVuny8MHZIYGc4K+1m+AQHXCfMAGTE8NYLDVL9t8H+EfjZey1sjVOO78BBmYYoA30xqzBgEMt2eo=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
