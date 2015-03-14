@@ -1428,7 +1428,42 @@ namespace WechatHistory
                             strMessage = string.Format("<a style=\"color:#888\">通话时长：{2:00}:{0:00}:{1:00}</a>", nMin, nSec, nHour);
                         break;
                     case 47:    // 表情（暂不可提取）
-                        strMessage = "<a style=\"color:#888\">表情信息（暂不可提取）</a>";
+                        string strEmotPath = AppDomain.CurrentDomain.BaseDirectory + "emoticon1\\";
+                        string strMD5 = "";
+                        string strProductId = "";
+                        try
+                        {
+                            // 解析 XML 数据
+                            XmlReaderSettings settings = new XmlReaderSettings();
+                            settings.ConformanceLevel = ConformanceLevel.Fragment;  // Tell the XmlReader to not be so picky
+                            if (strMessage.Contains("<msg"))
+                                strMessage = strMessage.Substring(strMessage.IndexOf("<msg"));
+                            MemoryStream msXmlVoice = new MemoryStream(Encoding.UTF8.GetBytes(strMessage));
+                            XmlReader xmlVoice = XmlReader.Create(msXmlVoice, settings);
+                            while (xmlVoice.Read())
+                            {
+                                if (xmlVoice.NodeType == XmlNodeType.Element)
+                                {
+                                    if (xmlVoice.Name == "emoji")
+                                    {
+                                        strMD5 = xmlVoice.GetAttribute("md5");
+                                        strProductId = xmlVoice.GetAttribute("productid");
+                                        break;
+                                    }
+                                }
+                            }
+                            xmlVoice.Close();
+                            msXmlVoice.Close();
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.Message); }
+                        bool bDisplay = true;
+                        if (strMD5.Length == 0) bDisplay = false;
+                        string strEmoji = strEmotPath + strMD5 + ".pic";
+                        if (File.Exists(strEmoji) == false) bDisplay = false;
+                        if (bDisplay)
+                            strMessage = String.Format("<img width=\"150px\" src=\"{0}\">", strEmoji);
+                        else
+                            strMessage = "<a style=\"color:#888\">表情信息（暂不可提取）</a>";
                         break;
                     case 42:    // 名片
                         string strNick = "";

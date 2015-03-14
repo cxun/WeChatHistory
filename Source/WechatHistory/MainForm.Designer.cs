@@ -289,7 +289,7 @@
             this.cbSearchArea.Location = new System.Drawing.Point(156, 4);
             this.cbSearchArea.Name = "cbSearchArea";
             this.cbSearchArea.Size = new System.Drawing.Size(77, 20);
-            this.cbSearchArea.TabIndex = 11;
+            this.cbSearchArea.TabIndex = 10;
             // 
             // btnSearchHistory
             // 
@@ -297,7 +297,7 @@
             this.btnSearchHistory.Location = new System.Drawing.Point(239, 3);
             this.btnSearchHistory.Name = "btnSearchHistory";
             this.btnSearchHistory.Size = new System.Drawing.Size(57, 22);
-            this.btnSearchHistory.TabIndex = 10;
+            this.btnSearchHistory.TabIndex = 11;
             this.btnSearchHistory.Text = "搜索(&F)";
             this.btnSearchHistory.UseVisualStyleBackColor = true;
             this.btnSearchHistory.Click += new System.EventHandler(this.btnSearchHistory_Click);
