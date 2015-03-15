@@ -943,6 +943,7 @@ namespace WechatHistory
                 //fs.Close();
                 #endregion
 
+                // 若没有对应的消息记录，不列入好友列表
                 MD5 md5Hash = MD5.Create();
                 string table = "Chat_" + GetMd5Hash(md5Hash, info.strUsrName);
                 SQLiteCommand cmd2 = new SQLiteCommand(connection);
@@ -953,7 +954,6 @@ namespace WechatHistory
                 }
                 catch (System.Data.SQLite.SQLiteException ex)
                 {
-                    //if (ex.Message.Contains("no such table"))
                     continue;
                 }
 
@@ -1017,7 +1017,8 @@ namespace WechatHistory
                 tv.Sort();
                 for (int i = 0; i < tv.Nodes.Count; i++)
                     tv.Nodes[i].ExpandAll();
-                tv.Nodes[0].EnsureVisible();
+                if (tv.Nodes.Count != 0)
+                    tv.Nodes[0].EnsureVisible();
             }
 
             connection.Close();
@@ -1217,7 +1218,7 @@ namespace WechatHistory
                 nTotal = dr.GetInt32(0);
                 dr.Close();
                 // 开始读取数据
-                cmd.CommandText = "select datetime(createtime, 'unixepoch', 'localtime'),* from " + table;
+                cmd.CommandText = "select datetime(createtime, 'unixepoch', 'localtime'),* from " + table + " order by CreateTime asc";
                 cmd.ExecuteNonQuery();
             }
             catch (System.Data.SQLite.SQLiteException ex)
@@ -1255,21 +1256,34 @@ namespace WechatHistory
                 switch (nType)
                 {
                     case 1:     // 文字
+                        //if (strFriendMD5 == "ffcc9697ac3309e93d80f7773b133f88")
+                        if (strMessage.StartsWith("<mmreader>"))
+                            strMessage = "<a style=\"color:#888\">腾讯新闻，尚未开发……</a>";
                         break;
                     case 3:     // 图片
                         string strImgDir = m_strRoot + "Img\\" + strFriendMD5 + "\\";
                         string strImgSmall = strImgDir + nMesLocalID + ".pic_thum";
                         string strImgBig = strImgDir + nMesLocalID + ".pic";
-                        if (File.Exists(strImgSmall) == false)
-                            strImgSmall = strImgBig;
-                        else if (File.Exists(strImgBig) == false)
-                            strImgBig = strImgSmall;
-                        if (File.Exists(strImgBig + "_hd"))  // 若有原图，默认显示原图
-                            strMessage = "<IMG style=\"cursor:hand;max-width:150px;max-height:150px\" src=\""
-                                + strImgSmall + "\" name=\"" + strImgBig + "_hd" + "\">";
+                        string strImgHuge = strImgDir + nMesLocalID + ".pic_hd";
+                        string strImgName = "";  // 点开之后的大图
+                        string strImgThum = "";  // 缩略图
+                        // 默认显示更清晰的图
+                        if (File.Exists(strImgHuge))
+                            strImgName = strImgHuge;
+                        else if (File.Exists(strImgBig))
+                            strImgName = strImgBig;
                         else
-                            strMessage = "<IMG style=\"cursor:hand;max-width:150px;max-height:150px\" src=\""
-                                + strImgSmall + "\" name=\"" + strImgBig + "\">";
+                            strImgName = strImgSmall;
+                        // 确保能显示缩略图
+                        if (File.Exists(strImgSmall))
+                            strImgThum = strImgSmall;
+                        else if (File.Exists(strImgBig))
+                            strImgThum = strImgBig;
+                        else
+                            strImgThum = strImgHuge;
+                        // 最终 html
+                        strMessage = "<IMG style=\"cursor:hand;max-width:150px;max-height:150px\" src=\""
+                            + strImgThum + "\" name=\"" + strImgName + "\">";
                         break;
                     case 43:    // 视频
                     case 62:    // 小视频
@@ -1347,14 +1361,12 @@ namespace WechatHistory
                             strMessage = "<a style=\"color:#888\"> 实时位置信息... </a>";
                         else
                         {
-                            //int nFirstIndex = strMessage.IndexOf("<title>") + 7;
-                            //string strTitle = strMessage.Substring(nFirstIndex, strMessage.IndexOf("</title>") - nFirstIndex);
-                            //nFirstIndex = strMessage.IndexOf("<des>") + 5;
-                            //string strDesc = strMessage.Substring(nFirstIndex, strMessage.IndexOf("</des>") - nFirstIndex);
-                            //nFirstIndex = strMessage.IndexOf("<url>") + 5;
-                            //string strUrl = strMessage.Substring(nFirstIndex, strMessage.IndexOf("</url>") - nFirstIndex);
-                            strMessage = string.Format("分享链接：<a href=\"{0}\" target=\"_blank\">{1}</br>" +
-                                "<a style=\"color:#888\">{2}</a></a>", strUrl, strTitle, strDesc);
+                            if (strUrl.Trim().Length == 0)
+                                strMessage = string.Format("分享链接：<a>{1}</br>" +
+                                    "<a style=\"color:#888\">{2}</a></a>", strUrl, strTitle, strDesc);
+                            else
+                                strMessage = string.Format("分享链接：<a href=\"{0}\" target=\"_blank\">{1}</br>" +
+                                    "<a style=\"color:#888\">{2}</a></a>", strUrl, strTitle, strDesc);
                         }
                         break;
                     case 48:     // 位置
@@ -2136,8 +2148,12 @@ namespace WechatHistory
             // 打开视频
             else if (strPicPath.Contains(".mp4"))
             {
-                if (File.Exists(strPicPath))
-                    System.Diagnostics.Process.Start(strPicPath);
+                try
+                {
+                    if (File.Exists(strPicPath))
+                        System.Diagnostics.Process.Start(strPicPath);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
             // 打开语音
             else if (strPicPath.Contains(".aud"))
@@ -2171,7 +2187,7 @@ namespace WechatHistory
                         string strFfmpeg = AppDomain.CurrentDomain.BaseDirectory + "ffmpeg\\ffmpeg.exe";
                         System.Diagnostics.Process proFfmpeg = new System.Diagnostics.Process();
                         proFfmpeg.StartInfo.FileName = strFfmpeg;
-                        proFfmpeg.StartInfo.Arguments = string.Format("-y -i {0} {1}", strAmrFile, strWavFile);
+                        proFfmpeg.StartInfo.Arguments = string.Format("-y -i \"{0}\" \"{1}\"", strAmrFile, strWavFile);
                         proFfmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                         proFfmpeg.Start();
                         proFfmpeg.WaitForExit();
@@ -2198,7 +2214,7 @@ namespace WechatHistory
                         string strSilkCodec = AppDomain.CurrentDomain.BaseDirectory + "ffmpeg\\SilkDecoder.exe";
                         System.Diagnostics.Process proSilkCodec = new System.Diagnostics.Process();
                         proSilkCodec.StartInfo.FileName = strSilkCodec;
-                        proSilkCodec.StartInfo.Arguments = string.Format("{0} {1}", strSilkFile, strPcmFile);
+                        proSilkCodec.StartInfo.Arguments = string.Format("\"{0}\" \"{1}\"", strSilkFile, strPcmFile);
                         proSilkCodec.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                         proSilkCodec.Start();
                         proSilkCodec.WaitForExit();
@@ -2208,7 +2224,7 @@ namespace WechatHistory
                         System.Diagnostics.Process proFfmpeg = new System.Diagnostics.Process();
                         proFfmpeg.StartInfo.FileName = strFfmpeg;
                         proFfmpeg.StartInfo.Arguments = string.Format(
-                            "-y -f s16le -ar 11780 -ac 2 -i {0} -ar 11780 -ac 2 {1}", strPcmFile, strWavFile);
+                            "-y -f s16le -ar 11780 -ac 2 -i \"{0}\" -ar 11780 -ac 2 \"{1}\"", strPcmFile, strWavFile);
                         proFfmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                         proFfmpeg.Start();
                         proFfmpeg.WaitForExit();
@@ -2441,7 +2457,7 @@ namespace WechatHistory
                 try
                 {
                     // 开始读取数据
-                    cmd.CommandText = "select message from " + table;
+                    cmd.CommandText = "select message from " + table + " order by CreateTime asc";
                     cmd.ExecuteNonQuery();
                 }
                 catch (System.Data.SQLite.SQLiteException ex)
