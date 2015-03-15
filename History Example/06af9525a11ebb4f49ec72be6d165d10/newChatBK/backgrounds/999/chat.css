@@ -1,0 +1,20 @@
+
+
+.chatBackground
+{
+	/* 版本 */
+	version : 1;
+	 
+	time_color:#ffffff;
+	time_shadow_color:clear;
+	time_show_background:yes;
+
+	voice_second_color:#ffffff;
+	voice_second_shadow_color:clear;
+	voice_second_show_background:no;
+	 
+	/* 背景图 */
+	background_image : "ChatBackground_00.jpg";
+	/* 缩略图 */
+	thumb_image : "ChatBackground_00.jpg";
+}

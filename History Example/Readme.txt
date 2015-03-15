@@ -1,0 +1,1 @@
+When the application is launched, the history database file needs to be selected. Try to open the database file located at: \06af9525a11ebb4f49ec72be6d165d10\DB\MM.sqlite
