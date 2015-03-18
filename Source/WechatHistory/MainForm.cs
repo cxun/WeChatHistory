@@ -1034,12 +1034,34 @@ namespace WechatHistory
         }
 
         /// <summary>
+        /// 重新封装 GetTempFileName 函数，使得临时文件都在固定的文件夹内，方便退出程序时整体清理
+        /// </summary>
+        /// <returns></returns>
+        private string GetTempFileName()
+        {
+            string strTmpFile = "";
+            try
+            {
+                string strOriTmpFile = Path.GetTempFileName();
+                string strTmpDir = System.Environment.GetEnvironmentVariable("TEMP");
+                Directory.CreateDirectory(strTmpDir + "\\WeChatHistoryTmp");
+                strTmpFile = strTmpDir + "\\WeChatHistoryTmp\\" + Path.GetFileName(strOriTmpFile);
+                File.Move(strOriTmpFile, strTmpFile);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return strTmpFile;
+        }
+
+        /// <summary>
         /// 将资源文件中的 emoji 释放在临时文件夹中
         /// </summary>
         private void ReleaseEmoji()
         {
             // 释放路径
-            string strEmojiPath = Path.GetTempFileName() + "_emoji\\";
+            string strEmojiPath = GetTempFileName() + "_emoji\\";
             m_strEmojiPath = strEmojiPath.Replace(".tmp", "_tmp");
             m_strStyle = m_strStyle.Replace("%EMOJIPATH%", m_strEmojiPath);
             m_strStyle = m_strStyle.Replace("C:\\", "file:///C:/");
@@ -1231,7 +1253,7 @@ namespace WechatHistory
             int nCount = 0;
             int nPageCount = 0;
             string strLastFile = "";
-            string strTmpPath = Path.GetTempFileName() + "\\";
+            string strTmpPath = GetTempFileName() + "\\";
             m_strTmpPath = strTmpPath.Replace(".tmp", "_tmp");
             Directory.CreateDirectory(m_strTmpPath);
 
@@ -2171,7 +2193,7 @@ namespace WechatHistory
                     if (bIsAmr)  // AMR 文件
                     {
                         // 将 aud 文件转换成 amr 文件
-                        string strAmrFile = Path.GetTempFileName();
+                        string strAmrFile = GetTempFileName();
                         FileStream fsw = File.OpenWrite(strAmrFile);
                         fsw.Write(Encoding.ASCII.GetBytes("#!AMR\n"), 0, 6);  // amr 文件头
                         FileStream fsr = File.OpenRead(strPicPath);
@@ -2198,7 +2220,7 @@ namespace WechatHistory
                     else  // SILK 文件
                     {
                         // 将 aud 文件转换成 silk 文件：去掉第一个字节
-                        string strSilkFile = Path.GetTempFileName();
+                        string strSilkFile = GetTempFileName();
                         FileStream fsw = File.OpenWrite(strSilkFile);
                         FileStream fsr = File.OpenRead(strPicPath);
                         fsr.ReadByte();  // 去掉第一个字节
@@ -2542,6 +2564,14 @@ namespace WechatHistory
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            // 删除所有临时文件
+            try
+            {
+                string strTmpDir = System.Environment.GetEnvironmentVariable("TEMP");
+                Directory.Delete(strTmpDir + "\\WeChatHistoryTmp", true);
+            }
+            catch (Exception ex) { }
+
             Application.Exit();
         }
 
