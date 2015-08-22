@@ -905,7 +905,7 @@ namespace WechatHistory
                 info.strNickName = dr.GetString(2);
                 info.strRemarkName = dr.GetString(8);
                 info.strPinyin = dr.GetString(8);
-                int nType = dr.GetInt16(10);
+                int nType = dr.GetInt32(10);  // modified by cxun 20150821
                 string strFullPY = "";
                 try
                 {
@@ -947,15 +947,33 @@ namespace WechatHistory
                 MD5 md5Hash = MD5.Create();
                 string table = "Chat_" + GetMd5Hash(md5Hash, info.strUsrName);
                 SQLiteCommand cmd2 = new SQLiteCommand(connection);
-                cmd2.CommandText = "select * from " + table;
+                // <del by cxun 20150821
+                //cmd2.CommandText = "select * from " + table;
+                //try
+                //{
+                //    cmd2.ExecuteNonQuery();
+                //}
+                //catch (System.Data.SQLite.SQLiteException ex)
+                //{
+                //    continue;
+                //}
+                // >
+
+                // <optimize query by zeroxenof 2015-07-30
+                cmd2.CommandText = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='" + table + "'";
                 try
                 {
-                    cmd2.ExecuteNonQuery();
+                    var rowCount = cmd2.ExecuteScalar();
+                    if (rowCount == null || Convert.ToInt32(rowCount) == 0)
+                    {
+                        continue;
+                    }
                 }
                 catch (System.Data.SQLite.SQLiteException ex)
                 {
                     continue;
                 }
+                // >
 
                 TreeNode node = new TreeNode();
                 if (info.strRemarkName.Length == 0)
@@ -1030,7 +1048,11 @@ namespace WechatHistory
 
             // 加载首页
             StreamToFile(m_strEmojiPath, ".", "default.html");
+            // <modified by cxun 20150821 EO.WebBrowser 控件不支持 Win10，暂时不能解决
+            try {
             wbHistory.WebView.Url = m_strEmojiPath + "default.html"; ;
+            } catch (Exception ex) {}
+            // >
         }
 
         /// <summary>
