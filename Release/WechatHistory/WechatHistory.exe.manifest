@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="WechatHistory.exe" version="1.0.1.4" publicKeyToken="6586dbea13f25250" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="WechatHistory.exe" version="1.0.1.5" publicKeyToken="533ff52a8caf226f" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="WeChat.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="WechatHistory" version="1.0.1.4" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="WechatHistory" version="1.0.1.5" language="neutral" processorArchitecture="x86" />
     <commandLine file="WechatHistory.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EO.WebBrowser.dll" size="27951616">
-      <assemblyIdentity name="EO.WebBrowser" version="3.0.100.0" publicKeyToken="E92353A6BF73FFFC" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EO.Base.dll" size="3592192">
+      <assemblyIdentity name="EO.Base" version="15.2.88.0" publicKeyToken="E92353A6BF73FFFC" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ANxLLechKAMva+LNrYqzSV0Vv44=</dsig:DigestValue>
+        <dsig:DigestValue>hyIIqgnng823lYi3S8BJ0L5fwWM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EO.WebBrowser.dll" size="289280">
+      <assemblyIdentity name="EO.WebBrowser" version="15.2.88.0" publicKeyToken="E92353A6BF73FFFC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>vnxiSEk2EgJy8rs/h13WHVHOdeM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EO.WebEngine.dll" size="33124352">
+      <assemblyIdentity name="EO.WebEngine" version="15.2.88.0" publicKeyToken="E92353A6BF73FFFC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>6OSA38OYTe5bT/7cS3QfHSg6feY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -68,13 +92,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WechatHistory.exe" size="3223040">
-      <assemblyIdentity name="WechatHistory" version="1.0.1.4" language="neutral" processorArchitecture="x86" />
+      <assemblyIdentity name="WechatHistory" version="1.0.1.5" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>na/9Egd/vvsRvs2l19l4eWEORjc=</dsig:DigestValue>
+        <dsig:DigestValue>tjisqo6iS6qYXeWA7YA80WX8GB0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -17376,4 +17400,4 @@
       <dsig:DigestValue>58EjkOgt6z3GU98Mr/xww0O67DE=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=DESKTOP-RUMIFB8\Admin" issuerKeyHash="c3fa68098bcf3767d13ffc53c40578dc7df50e3d" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>JULywJj6FaTLut5DIVpDn//DWKw=</DigestValue></Reference></SignedInfo><SignatureValue>Irt2CaLj/iNVqpEYmwB2OXcLQwVZ3toarH1ZT6PjVFCzWmp8ntEx3oUJ81bFFlkD0AtQCZHrZrXznl4ZPLkpiqxGNcS46MIv3s8AY3NspCOM3X/yM42J8q2zjt9iWXLBzZdJNiEf8gMSgGqVClQSGNRr8KY+iWWusByuLtqWQAo=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>ttL+IMW8QNDUUA+FySq2DLsWjPsZEiA7ZI9mtuZR0LO2WCdJJGDmj2EDCDcXCNob/Xb0M1X0+s5zB6CzU50dyhmmnUeGvKmohtM3dyTmz7kifGMJS77txQK2DQ13YCleysmHkemDODRQPkFqrkygRcsV6giFIWUZ1faNeyS3s5s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="ac58c3ff9f435a2143debacba415fa98c0f24225" Description="" Url=""><as:assemblyIdentity name="WechatHistory.exe" version="1.0.1.4" publicKeyToken="6586dbea13f25250" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-RUMIFB8\Admin</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>Q45DARifLRfN83QTG69pG52Dtzo=</DigestValue></Reference></SignedInfo><SignatureValue>Pggac98TtCeEEa0eMh1z28KoXlrC6UDVpanF9lbiX8HOHVdOtxvaRWxg/pGvqakEmRc5kjSHdWYwfJhXMBKULt1Wkc4tbzFFkiF0HlJ8Fs8YLPAqbuP3takA26tPXkWBWPGFrDUFiYKOzmLUujieoLe4g3t+1zbfRyNhFJhI6Ek=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>ttL+IMW8QNDUUA+FySq2DLsWjPsZEiA7ZI9mtuZR0LO2WCdJJGDmj2EDCDcXCNob/Xb0M1X0+s5zB6CzU50dyhmmnUeGvKmohtM3dyTmz7kifGMJS77txQK2DQ13YCleysmHkemDODRQPkFqrkygRcsV6giFIWUZ1faNeyS3s5s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQGk+nYllHdKhPQPRVUXUYcTANBgkqhkiG9w0BAQUFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFIAVQBNAEkARgBCADgAXABBAGQAbQBpAG4wHhcNMTUwOTE4MDgzMDEwWhcNMTYwOTE3MTQzMDEwWjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFIAVQBNAEkARgBCADgAXABBAGQAbQBpAG4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALbS/iDFvEDQ1FAPhckqtgy7Foz7GRIgO2SPZrbmUdCztlgnSSRg5o9hAwg3FwjaG/129DNV9PrOcwegs1OdHcoZpp1HhrypqIbTN3ck5s+5InxjCUu+7cUCtg0Nd2ApXsrJh5Hpgzg0UD5Baq5MoEXLFeoIhSFlGdX2jXskt7ObAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAOBGRreOoI8h2da+y9J1wrPHpXphrvFypiYz5mMArBmWrUZU7+ZEH/LMDKApXUPb2jxroBswybPzkzk4uVS267FA5ulJVTip74nZZLgyo5SE+rXpH/SoHEuAmjhkY2K6tsUsrq6BiJkaFd1FDvYkUNHsQgZpP4+ltkgKEj2n3luk=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=DESKTOP-RUMIFB8\Admin" issuerKeyHash="d8466dae20c5d93251613822790296191a0931ad" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>GVSuoFKbZwwJGP3dAjgHJJsopkw=</DigestValue></Reference></SignedInfo><SignatureValue>VZIyEiEHIs9U0nfI8n1eU5TTofO3Ru/MBYy0iZMUixyEyEBw3wEVLtE8iWtmV7mml+raD8lrXb0ZgFDKsKHN3LaWpO9CwonRBZIfR50xkLR/Q0CIvWxN05y/Bbr6AptSn3AtiTLN4MNNTMb+DuwoZBvnc+oFGCZaG+i6o1L5Kes=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>qQxscxUK97Q4wAi1ELtwWQdShwGKyGU2fs6NiCUjMIRJeXVsz+Zvq9C/VaAJkCtl2s2AYpxsvRtAyBVnVnYMAsV5uUZqB7Ogk9H/9VtnVwNKKwYjDES5shT2mwtDrryc7queNWrm5S5I7SKa4H7yMulP5li913uBNAa5jA2ZT70=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="4ca6289b24073802ddfd18090c679b52a0ae5419" Description="" Url=""><as:assemblyIdentity name="WechatHistory.exe" version="1.0.1.5" publicKeyToken="533ff52a8caf226f" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-RUMIFB8\Admin</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>7puH4G8D2Ms5QpYfqKuVzoqCtvI=</DigestValue></Reference></SignedInfo><SignatureValue>TC5pqSZA6NdCCazr5/b/QU5q6zHRMh3vmGk7dytt3Oaia8SGZFTS9Wzv+i5/IhADwR68/aPZXmg3PeXT5jvYdysFYeztXl5a/vP76ma6ph6XbwBF2qN0cU1pufEvaWkecgA5k0lyUtxIVsFZ/BjoiUe2dmvwD1RH8CniHLUFj38=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>qQxscxUK97Q4wAi1ELtwWQdShwGKyGU2fs6NiCUjMIRJeXVsz+Zvq9C/VaAJkCtl2s2AYpxsvRtAyBVnVnYMAsV5uUZqB7Ogk9H/9VtnVwNKKwYjDES5shT2mwtDrryc7queNWrm5S5I7SKa4H7yMulP5li913uBNAa5jA2ZT70=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQR/P4iJaZDLBPmuQ1wCVEnzANBgkqhkiG9w0BAQUFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFIAVQBNAEkARgBCADgAXABBAGQAbQBpAG4wHhcNMTUxMDIyMDQwNDUyWhcNMTYxMDIxMTAwNDUyWjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFIAVQBNAEkARgBCADgAXABBAGQAbQBpAG4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKkMbHMVCve0OMAItRC7cFkHUocBishlNn7OjYglIzCESXl1bM/mb6vQv1WgCZArZdrNgGKcbL0bQMgVZ1Z2DALFeblGagezoJPR//VbZ1cDSisGIwxEubIU9psLQ668nO6rnjVq5uUuSO0imuB+8jLpT+ZYvdd7gTQGuYwNmU+9AgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAOIZnoxOtdqDvjCUXHFSxwriLrrkqR6XKoyeT6QMBZyi7AigPQTNlpY6l6b3S9KjN7TqYZfPj+H3UcTSHk6vFtaj1oAF1KQ2PcprC729UDtaOvxJhR5zuugr8B36RmamjiXmp10McRmUJUmnRqILthB4c9ooUIXqd/VViA/dk8nQ=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
