@@ -775,6 +775,10 @@ namespace WechatHistory
         string m_strEmojiPath = "";  // 存放 emoji 的路径
         bool m_bShouldExit = false;  // 若为 TRUE， MainForm Shown 时将退出程序，实现启动时点击取消退出程序
 
+        // 新版的 EO 控件对 MouseClick 事件捕捉得不好，所以用 MouseDown + MouseUp 来代替
+        bool m_bDown = false;
+        bool m_bMove = false;
+
         public MainForm()
         {
             InitializeComponent();
@@ -2627,6 +2631,30 @@ namespace WechatHistory
                 tbSearchHistory.Text = "搜索聊天记录";
                 tbSearchHistory.ForeColor = Color.LightGray;
             }
+        }
+
+        private void wbView_MouseDown(object sender, MouseEventArgs e)
+        {
+            m_bDown = true;
+            m_bMove = false;
+        }
+
+        private void wbView_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (m_bDown && !m_bMove)
+                wbView_MouseClick(sender, e);
+            m_bDown = false;
+        }
+
+        private void wbView_MouseMove(object sender, MouseEventArgs e)
+        {
+            m_bMove = true;
+        }
+
+        private void wbView_NewWindow(object sender, NewWindowEventArgs e)
+        {
+            // 什么都不做
+            // 此事件必须有，否则控件会弹出要求实现本函数的提示
         }
 
     }

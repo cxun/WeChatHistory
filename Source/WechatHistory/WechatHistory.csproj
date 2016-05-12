@@ -19,7 +19,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\cxun\Study\Work\My Program\2015.3.10_微信聊天记录阅读器%28iOS%29\Publish\</PublishUrl>
+    <PublishUrl>D:\cxun\Work\My Program\2015.3.10_微信聊天记录阅读器%28iOS%29\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,7 +32,7 @@
     <ProductName>微信聊天记录查看器</ProductName>
     <PublisherName>WeChatHistory</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -61,7 +61,7 @@
     <ApplicationIcon>WeChat.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C49539A1BFFF97C5D1631A2F60D0BB9FE888F7A4</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BBAAA32F69311751DDC1BC5005790DFCAF884B4E</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>WechatHistory_TemporaryKey.pfx</ManifestKeyFile>
@@ -5924,6 +5924,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="WechatHistory_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\forward.png" />
