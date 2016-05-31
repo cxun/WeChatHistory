@@ -221,9 +221,7 @@
             // 
             this.wbView.AllowDropLoad = false;
             this.wbView.NewWindow += new EO.WebBrowser.NewWindowHandler(this.wbView_NewWindow);
-            this.wbView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.wbView_MouseDown);
-            this.wbView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.wbView_MouseUp);
-            this.wbView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.wbView_MouseMove);
+            this.wbView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.wbView_MouseClick);
             // 
             // btnLast
             // 

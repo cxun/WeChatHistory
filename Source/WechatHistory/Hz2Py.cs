@@ -307,54 +307,69 @@ namespace WechatHistory
         /// <returns>转换后的拼音(全拼)字符串</returns>
         public static string GetAllPYLetters(string transName)
         {
-            // 匹配中文字符
-            Regex regex = new Regex("^[\u4e00-\u9fa5]$");
-            byte[] array = new byte[2];
-            string pyString = "";
-            int chrAsc = 0;
-            int i1 = 0;
-            int i2 = 0;
-            char[] noWChar = transName.ToCharArray();
-            for (int j = 0; j < noWChar.Length; j++)
+            try
             {
-                // 中文字符
-                if (regex.IsMatch(noWChar[j].ToString()))
+                // 匹配中文字符
+                Regex regex = new Regex("^[\u4e00-\u9fa5]$");
+                byte[] array = new byte[2];
+                string pyString = "";
+                int chrAsc = 0;
+                int i1 = 0;
+                int i2 = 0;
+                char[] noWChar = transName.ToCharArray();
+                for (int j = 0; j < noWChar.Length; j++)
                 {
-                    array = System.Text.Encoding.Default.GetBytes(noWChar[j].ToString());
-                    i1 = (short)(array[0]);
-                    i2 = (short)(array[1]);
-                    chrAsc = i1 * 256 + i2 - 65536;
-                    if (chrAsc > 0 && chrAsc < 160)
+                    // 中文字符
+                    if (regex.IsMatch(noWChar[j].ToString()))
                     {
-                        pyString += noWChar[j];
-                    }
-                    else
-                    {
-                        // 修正部分文字
-                        if (chrAsc == -9254)  // 修正“圳”字
-                            pyString += "Zhen";
-                        else if (chrAsc == -5488)  // 修正“陳”字
-                            pyString += "Chen";
+                        array = System.Text.Encoding.Default.GetBytes(noWChar[j].ToString());
+                        i1 = (short)(array[0]);
+                        i2 = (short)(array[1]);
+                        chrAsc = i1 * 256 + i2 - 65536;
+                        if (chrAsc > 0 && chrAsc < 160)
+                        {
+                            pyString += noWChar[j];
+                        }
                         else
                         {
-                            for (int i = (pyValue.Length - 1); i >= 0; i--)
+                            // 修正部分文字
+                            if (chrAsc == -9254)  // 修正“圳”字
+                                pyString += "Zhen";
+                            else if (chrAsc == -5488)  // 修正“陳”字
+                                pyString += "Chen";
+                            else
                             {
-                                if (pyValue[i] <= chrAsc)
+                                for (int i = (pyValue.Length - 1); i >= 0; i--)
                                 {
-                                    pyString += pyName[i];
-                                    break;
+                                    if (pyValue[i] <= chrAsc)
+                                    {
+                                        pyString += pyName[i];
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
+                    // 非中文字符
+                    else
+                    {
+                        pyString += noWChar[j].ToString();
+                    }
                 }
-                // 非中文字符
-                else
-                {
-                    pyString += noWChar[j].ToString();
-                }
+                return pyString;
             }
-            return pyString;
+            catch (Exception ex)
+            {
+                string strInfo = "在函数 GetAllPYLetters() 中捕获到异常！";
+                strInfo += "\nMessage: ";
+                strInfo += ex.Message;
+                strInfo += "\nParameter: transName = ";
+                strInfo += transName;
+                strInfo += "\n请复制以上信息（Ctrl + C）并发送给作者协助排除错误：cxun@live.cn";
+                strInfo += "\n感谢对本软件的支持，谢谢！";
+                System.Windows.Forms.MessageBox.Show(strInfo);
+                return "";
+            }
         }
     }
 }
