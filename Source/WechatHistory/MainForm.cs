@@ -775,9 +775,13 @@ namespace WechatHistory
         string m_strEmojiPath = "";  // 存放 emoji 的路径
         bool m_bShouldExit = false;  // 若为 TRUE， MainForm Shown 时将退出程序，实现启动时点击取消退出程序
 
+        // <del by cxun 2016.5.15
+        // 发送邮件提交BUG之后，控件已修复BUG，并给出最新版本：EO.Total.2016.0.84.0.msi
+        // 故暂时将此代替方法去掉
         // 新版的 EO 控件对 MouseClick 事件捕捉得不好，所以用 MouseDown + MouseUp 来代替
-        bool m_bDown = false;
-        bool m_bMove = false;
+        //bool m_bDown = false;
+        //bool m_bMove = false;
+        // >
 
         public MainForm()
         {
@@ -2633,23 +2637,25 @@ namespace WechatHistory
             }
         }
 
-        private void wbView_MouseDown(object sender, MouseEventArgs e)
-        {
-            m_bDown = true;
-            m_bMove = false;
-        }
+        // <del by cxun 2016.5.15
+        //private void wbView_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    m_bDown = true;
+        //    m_bMove = false;
+        //}
 
-        private void wbView_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (m_bDown && !m_bMove)
-                wbView_MouseClick(sender, e);
-            m_bDown = false;
-        }
+        //private void wbView_MouseUp(object sender, MouseEventArgs e)
+        //{
+        //  if (m_bDown && !m_bMove)
+        //      wbView_MouseClick(sender, e);
+        //  m_bDown = false;
+        //}
 
-        private void wbView_MouseMove(object sender, MouseEventArgs e)
-        {
-            m_bMove = true;
-        }
+        //private void wbView_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    m_bMove = true;
+        //}
+        // end of del>
 
         private void wbView_NewWindow(object sender, NewWindowEventArgs e)
         {
